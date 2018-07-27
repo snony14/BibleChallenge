@@ -1,11 +1,28 @@
 <html>
  <body>
    <ul>
-     <li><a href="/account/Challenges">Challenges</a></li>
+     <li><a href="/account/">Account</a></li>
+     <li><a href="/account/challenges">Challenges</a></li>
      <li><a href="/account/teams">Teams</a></li>
      <li><a href="/account/settings">Settings</a></li>
-     <li><a href="/logout/">Log out</a></li>
+     <li><a href="/account/logout">Log out</a></li>
    </ul>
-  This is the dashboard, contain the various stuffs etc..
+  <h1>The teams you are involved in:</h1>
+  <ol>
+  {% for user in team_members %}
+    <li>Team:{{user.team.title}};<span> Challenge Status: </span></li>
+  {% endfor %}
+  </ol>
+
+  <h2>Create a team</h2>
+  <form method="post" action="/account/team/create">
+    {% csrf_token %}
+    Title: <input type="text" name="title"><br>
+    Description: <textarea name="textarea">
+    </textarea><br>
+    Should Team be public? <input type="checkbox" name="status"><br>
+    Maximum Members: <input type="number" name="members"><br>
+    <button type="submit">Create</button>
+  </form>
  </body>
 </html>

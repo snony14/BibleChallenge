@@ -20,4 +20,5 @@ urlpatterns = [
     path('', home, name="home"),
     path('search',search_team, name="search_team"),
     path('about', about, name="about us"),
+    path('register',register_user,name="register")
 ]
