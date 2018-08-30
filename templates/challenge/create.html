@@ -77,26 +77,48 @@
     <div class="col-xs-4">
       <div class="form-group">
         <label for="book">Select Bible Book</label>
-        <select class="form-control" id="book" >
-          {% for k in keys %}
-            <option value="{{k}}">{{k}}</option>
+        <select class="form-control" id="book" onchange="updateChapterCount()">
+          {% for pos, book in directories %}
+            <option value="{{pos}}">{{book}}</option>
           {% endfor %}
         </select>
+        <span id="quantity">50</span> Chapters
+      </div>
+      <div class="form-group"><!-- style="display:none;"> -->
+        <label for="chapter">Which option</label>
+        <select class="form-control" onchange="chapterOrWhole(this)">
+          <option value="0" selected="selected">Whole Book</option>
+          <option value="1">Chapter(s)</option>
+        </select>
+      </div>
+      <div class="form-group" id="for_chapters" style="display:none;">
+        <label>Write chapter(s), separated by comma</label>
+        <br>
+        <input type="text" id="chapters">
       </div>
       <div class="form-group">
-        <label for="book">Chapter</label>
-        <select class="form-control" id="chapter" >
-          {% for k in keys %}
-            <option value="{{k}}">{{k}}</option>
-          {% endfor %}
-        </select>
+        <label>Add to Goal</label>
+        <br>
+        <input type="number" min="1" value="1" id="for_goals">
       </div>
-      <button class="btn btn-warning">Add as Goal</button>
-    </div>
+      <button class="btn btn-warning" onclick="toGoal()">Add to Goal <span id="which_goal"></span></button>
+    </div><!-- Here -->
     <div class="col-xs-8">
-      <ul>
-         <li>Goal</li>
-      </ul>
+    <div>
+    <div class="form-group" >
+      <label>How many goals do you want the challenge to have?</label>
+      <br>
+      <!--
+      <input type="number" min="1" value="1">
+      <br> -->
+      <button class="btn btn-warning" onclick="addGoal()">Initialize Goals </div>
+
+      <div id="goals">
+
+      </div>
+      <input type="submit" class="btn btn-primary">
+    </div>
+    </div>
     </div>
   </div>
 </div>

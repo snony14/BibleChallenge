@@ -6,6 +6,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', include('public.urls')),
+    path('bible/', include('bible.urls')),
     path('login/', auth_views.login, name='login'),
     path('account/', include('userProfile.urls')),
     path('account/team/', include('team.urls')),

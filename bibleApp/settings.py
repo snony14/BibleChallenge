@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'userProfile',
     'team',
     'challenge',
+    'bible',
 ]
 
 MIDDLEWARE = [
